@@ -25,10 +25,8 @@ while len(guessed_voivodeships) < 16:
                                      prompt='What is another voivodeship name?').lower()
 
     if player_answer == 'exit':
-        missing_voivodeships = []
-        for voivodeship in all_voivodeships:
-            if voivodeship not in guessed_voivodeships:
-                missing_voivodeships.append(voivodeship)
+        missing_voivodeships = [voivodeship for voivodeship in all_voivodeships
+                                if voivodeship not in guessed_voivodeships]
         new_data = pandas.DataFrame(missing_voivodeships)
         new_data.to_csv('voivodeships_to_learn.csv')
         break
