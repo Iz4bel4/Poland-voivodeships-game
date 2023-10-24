@@ -21,9 +21,10 @@ guessed_voivodeships = []
 
 while len(guessed_voivodeships) < 16:
     player_answer = screen.textinput(title=f'{len(guessed_voivodeships)}/16 Voivodeships Correct',
-                                     prompt= 'What is another voivodeship name?').lower()
+                                     prompt='What is another voivodeship name?').lower()
 
     if player_answer in all_voivodeships:
+        guessed_voivodeships.append(player_answer)
         t = turtle.Turtle()
         t.hideturtle()
         t.penup()
