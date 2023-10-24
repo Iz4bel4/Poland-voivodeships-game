@@ -17,15 +17,19 @@ turtle.shape(image)
 data = pandas.read_csv('16_voivodeships.csv')
 all_voivodeships = data['voivodeship'].to_list()
 
+guessed_voivodeships = []
 
-player_answer = screen.textinput(title='x/16 Voivodeships Correct', prompt= 'What is another voivodeship name?')
+while len(guessed_voivodeships) < 16:
+    player_answer = screen.textinput(title=f'{len(guessed_voivodeships)}/16 Voivodeships Correct',
+                                     prompt= 'What is another voivodeship name?').lower()
 
-if player_answer in all_voivodeships:
-    t = turtle.Turtle()
-    t.hideturtle()
-    t.penup()
-    voivodeship_data = data[data.voivodeship == player_answer]
-    t.goto(int(voivodeship_data.x), int(voivodeship_data.y))
-    t.write(player_answer,  font=("Arial", 16, "normal"))
+    if player_answer in all_voivodeships:
+        t = turtle.Turtle()
+        t.hideturtle()
+        t.penup()
+        voivodeship_data = data[data.voivodeship == player_answer]
+        t.goto(int(voivodeship_data.x), int(voivodeship_data.y))
+        t.write(player_answer,  font=("Arial", 16, "normal"))
 
-turtle.mainloop()
+# turtle.mainloop()
+screen.exitonclick()
